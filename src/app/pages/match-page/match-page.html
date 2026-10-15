@@ -5,8 +5,15 @@
   [awayTeamName]="match().away"
   [homeScore]="homeGoalCount()"
   [awayScore]="awayGoalCount()"
-  [minutePlayed]="lastMinutePlayed()" />
+  [minutePlayed]="lastMinutePlayed()"
+  [isFinished]="hasFinished()" />
 
-  <app-stats-panel [statistics]="matchStatistics()" />
-  <app-timeline [matchEvents]="match().events" />
-  
+<app-playback-controls
+  [isPlaying]="isPlaying()"
+  [revealedCount]="revealedEventCount()"
+  [totalCount]="totalEventCount()"
+  (actionRequested)="handlePlaybackAction()" />
+
+<app-stats-panel [statistics]="matchStatistics()" />
+
+<app-timeline [matchEvents]="visibleEvents()" [shouldFollowLatest]="isPlaying()" />

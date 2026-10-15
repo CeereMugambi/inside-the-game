@@ -53,3 +53,13 @@ app-event-card { grid-row: 1; }
   .home-team app-event-card,
   .away-team app-event-card { grid-column: 2; justify-self: stretch; }
 }
+
+@keyframes timeline-item-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.timeline-item { animation: timeline-item-enter 0.4s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item { animation: none; }
+}

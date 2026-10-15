@@ -15,4 +15,4 @@
     <h2>{{ awayTeamName() }}</h2>
   </div>
 </header>
-<p class="match-status">Full time at {{ minutePlayed() }}'</p>
+<p class="match-status">{{ isFinished() ? 'Full time at' : 'Live at' }} {{ minutePlayed() }}'</p>

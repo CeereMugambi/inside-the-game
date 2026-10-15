@@ -1,0 +1,16 @@
+<div class="playback-controls">
+  <button type="button" class="playback-button" (click)="actionRequested.emit()">
+    {{ buttonLabel() }}
+  </button>
+
+  <div
+    class="progress-track"
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [attr.aria-valuenow]="progressPercent()">
+    <span class="progress-fill" [style.width.%]="progressPercent()"></span>
+  </div>
+
+  <span class="progress-text">{{ revealedCount() }} of {{ totalCount() }} events</span>
+</div>

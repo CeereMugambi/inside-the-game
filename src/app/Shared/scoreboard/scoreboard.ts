@@ -12,6 +12,7 @@ export class Scoreboard {
   homeScore = input.required<number>();
   awayScore = input.required<number>();
   minutePlayed = input.required<number>();
+  isFinished = input.required<boolean>();
 
   getTeamInitials(teamName: string) {
     return teamName

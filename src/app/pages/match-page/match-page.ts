@@ -3,14 +3,19 @@ import { RouterLink } from '@angular/router';
 import { MOCK_MATCH } from '../../Mock_data/mock-match';
 import { Scoreboard } from '../../Shared/scoreboard/scoreboard';
 import { StatsPanel } from '../../Shared/stats-panel/stats-panel';
-import { EventType, MatchStatistic } from '../../Shared/models/match';
+import { CommentaryLanguageCode, EventType, MatchStatistic } from '../../Shared/models/match';
 import { Timeline } from '../../Shared/timeline/timeline';
 import { PlaybackControls } from '../../Shared/playback-controls/playback-controls';
+import { LanguageSwitcher } from '../../Shared/language-switcher/language-switcher';
+import { CommentaryFeed } from '../../Shared/commentary-feed/commentary-feed';
+import { LANGUAGE_OPTIONS } from '../../Shared/models/language-options';
+import { MOCK_COMMENTARY } from '../../Mock_data/mock-commentary';
+
 
 const MILLISECONDS_BETWEEN_EVENTS = 1000;
 
 @Component({
-  imports: [Scoreboard, StatsPanel,Timeline,PlaybackControls, RouterLink],
+  imports: [Scoreboard, StatsPanel,Timeline,PlaybackControls,LanguageSwitcher,CommentaryFeed,RouterLink],
   selector: 'app-match-page',
   styleUrl: './match-page.css',
   templateUrl: './match-page.html',
@@ -29,6 +34,19 @@ export class MatchPage {
   homeGoalCount = computed(() => this.countEventsForTeam('goal', 'home'));
   awayGoalCount = computed(() => this.countEventsForTeam('goal', 'away'));
   lastMinutePlayed = computed(() => this.visibleEvents().at(-1)?.minute ?? 0);
+  languageOptions = LANGUAGE_OPTIONS;
+  selectedLanguageCode = signal<CommentaryLanguageCode>('en');
+  visibleCommentaryLines = computed(() => {
+  const lastRevealedEventId = this.visibleEvents().at(-1)?.id ?? 0;
+  return MOCK_COMMENTARY[this.selectedLanguageCode()].filter(
+    (commentaryLine) => commentaryLine.eventId <= lastRevealedEventId,
+  );
+});
+
+handleLanguageSelected(languageCode: CommentaryLanguageCode) {
+  this.selectedLanguageCode.set(languageCode);
+}
+
 
   matchStatistics = computed<MatchStatistic[]>(() => [
     this.buildStatistic('Shots on target', 'shot_on_target'),

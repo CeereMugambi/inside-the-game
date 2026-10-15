@@ -1,0 +1,14 @@
+<section class="commentary-feed" aria-live="polite" aria-label="Live commentary">
+  <h3 class="feed-title">Live commentary</h3>
+
+  @if (newestFirstLines().length === 0) {
+    <p class="feed-empty">Press play and the commentary will appear here as the match unfolds.</p>
+  }
+
+  @for (commentaryLine of newestFirstLines(); track commentaryLine.eventId) {
+    <article class="commentary-line">
+      <b class="commentary-minute">{{ commentaryLine.minute }}'</b>
+      <p>{{ commentaryLine.text }}</p>
+    </article>
+  }
+</section>

@@ -1,0 +1,24 @@
+:host { display: block; }
+
+.language-switcher { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.language-button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.language-button:hover { color: var(--color-text); }
+.language-button:focus-visible { outline: 3px solid var(--color-highlight); outline-offset: 2px; }
+
+.language-button.selected {
+  color: #12112b;
+  font-weight: 700;
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--color-home-team), var(--color-away-team));
+}

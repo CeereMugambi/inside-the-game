@@ -14,6 +14,15 @@
   [totalCount]="totalEventCount()"
   (actionRequested)="handlePlaybackAction()" />
 
-<app-stats-panel [statistics]="matchStatistics()" />
+<div class="match-layout">
+  <app-timeline [matchEvents]="visibleEvents()" [shouldFollowLatest]="isPlaying()" />
 
-<app-timeline [matchEvents]="visibleEvents()" [shouldFollowLatest]="isPlaying()" />
+  <aside class="match-sidebar">
+    <app-stats-panel [statistics]="matchStatistics()" />
+    <app-language-switcher
+      [languageOptions]="languageOptions"
+      [selectedLanguageCode]="selectedLanguageCode()"
+      (languageSelected)="handleLanguageSelected($event)" />
+    <app-commentary-feed [commentaryLines]="visibleCommentaryLines()" />
+  </aside>
+</div>

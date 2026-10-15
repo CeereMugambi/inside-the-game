@@ -23,3 +23,16 @@ export interface MatchStatistic {
   awayValue: number;
   homeSharePercent: number;
 }
+
+export interface CommentaryLine {
+  eventId: number;
+  minute: number;
+  text: string;
+}
+
+export type CommentaryLanguageCode = 'en' | 'sw' | 'fr' | 'es';
+
+export interface LanguageOption {
+  code: CommentaryLanguageCode;
+  label: string;
+}

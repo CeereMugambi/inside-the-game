@@ -1,0 +1,12 @@
+<div class="language-switcher" role="group" aria-label="Commentary language">
+  @for (languageOption of languageOptions(); track languageOption.code) {
+    <button
+      type="button"
+      class="language-button"
+      [class.selected]="languageOption.code === selectedLanguageCode()"
+      [attr.aria-pressed]="languageOption.code === selectedLanguageCode()"
+      (click)="languageSelected.emit(languageOption.code)">
+      {{ languageOption.label }}
+    </button>
+  }
+</div>

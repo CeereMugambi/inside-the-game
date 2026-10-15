@@ -1,35 +1,82 @@
-<section class="hero">
-  <p class="hero-badge">Premier League data, explained</p>
-  <h1>Every match tells a story. <span class="gradient-text">We narrate it.</span></h1>
-  <p class="hero-subtitle">
-    Turn raw match events into live commentary, tactical insight and instant recaps for fans, studios and streamers.
-  </p>
+<div class="page-content">
+  <nav class="site-navigation" aria-label="Main">
+    <a class="brand" routerLink="/"><span class="brand-mark">⚽</span>Inside the Game</a>
+    <a class="navigation-link" routerLink="/match">Open match centre</a>
+  </nav>
 
-  <div class="hero-actions">
-    <a class="primary-button" routerLink="/match">Open match centre</a>
-    <button type="button" class="secondary-button" (click)="scrollToFeatures()">See how it works</button>
-  </div>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-badge">Premier League data, explained</p>
+      <h1>Every match tells a story. <span class="gradient-text">We narrate it.</span></h1>
+      <p class="hero-subtitle">
+        Turn raw match events into live commentary, tactical insight and instant recaps for fans, studios and streamers.
+      </p>
 
-  <div class="match-preview">
-    <div class="preview-team">Northgate FC</div>
-    <div class="preview-score">2 : 2</div>
-    <div class="preview-team">Riverside United</div>
-    <p class="preview-moment">90' Late equaliser against ten men</p>
-  </div>
+      <div class="hero-actions">
+        <a class="primary-button" routerLink="/match">Open match centre</a>
+        <button type="button" class="secondary-button" (click)="scrollToFeatures()">See how it works</button>
+      </div>
 
-  <ul class="language-list">
+      <dl class="hero-highlights">
+        @for (heroHighlight of heroHighlights; track heroHighlight.label) {
+          <div class="highlight-item">
+            <dt>{{ heroHighlight.value }}</dt>
+            <dd>{{ heroHighlight.label }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <div class="hero-visual">
+      <app-video-showcase [videoSource]="sampleVideoSource" />
+      <span class="floating-chip chip-goal" aria-hidden="true">⚽ GOAL! 27'</span>
+      <span class="floating-chip chip-language" aria-hidden="true">🌍 Kiswahili</span>
+      <span class="floating-chip chip-insight" aria-hidden="true">🔍 Why it mattered</span>
+    </div>
+  </section>
+
+  <ul class="language-list" aria-label="Supported languages">
     @for (languageName of supportedLanguages; track languageName) {
       <li>{{ languageName }}</li>
     }
   </ul>
-</section>
 
-<section id="features" class="features">
-  @for (featureHighlight of featureHighlights; track featureHighlight.title) {
-    <article class="feature-card">
-      <span class="feature-icon">{{ featureHighlight.icon }}</span>
-      <h3>{{ featureHighlight.title }}</h3>
-      <p>{{ featureHighlight.description }}</p>
-    </article>
-  }
-</section>
+  <section id="features" class="content-section reveal">
+    <h2 class="section-title">Built for the whole broadcast</h2>
+    <p class="section-subtitle">One match feed, three ways to tell the story.</p>
+
+    <div class="feature-grid">
+      @for (featureHighlight of featureHighlights; track featureHighlight.title) {
+        <article class="feature-card">
+          <span class="feature-icon">{{ featureHighlight.icon }}</span>
+          <h3>{{ featureHighlight.title }}</h3>
+          <p>{{ featureHighlight.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="content-section reveal">
+    <h2 class="section-title">From data to story in three steps</h2>
+    <p class="section-subtitle">The same pipeline powers the studio, the stream and the fan feed.</p>
+
+    <ol class="steps">
+      @for (howItWorksStep of howItWorksSteps; track howItWorksStep.title; let stepIndex = $index) {
+        <li class="step-card">
+          <span class="step-number">{{ stepIndex + 1 }}</span>
+          <span class="step-icon">{{ howItWorksStep.icon }}</span>
+          <h3>{{ howItWorksStep.title }}</h3>
+          <p>{{ howItWorksStep.description }}</p>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="cta-banner reveal">
+    <h2>Ready for kick-off?</h2>
+    <p>Watch a full match unfold with live commentary, stats and a recap in your language.</p>
+    <a class="primary-button" routerLink="/match">Open match centre</a>
+  </section>
+
+  <footer class="site-footer">Built for the Inside the Game: Developer Hackathon.</footer>
+</div>

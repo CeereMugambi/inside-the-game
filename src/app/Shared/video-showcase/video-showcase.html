@@ -1,0 +1,45 @@
+<div class="showcase">
+  <div class="pitch-scene" aria-hidden="true">
+    <span class="pitch-line center-line"></span>
+    <span class="pitch-line center-circle"></span>
+    @for (playerDot of playerDots; track $index) {
+      <span
+        class="player-dot"
+        [class.home-team]="playerDot.teamSide === 'home'"
+        [class.away-team]="playerDot.teamSide === 'away'"
+        [style.left.%]="playerDot.leftPercent"
+        [style.top.%]="playerDot.topPercent"
+        [style.--drift-delay]="playerDot.driftDelaySeconds + 's'"></span>
+    }
+    <span class="ball"></span>
+  </div>
+
+  <video
+    #videoElement
+    class="feed-video"
+    [class.ready]="isVideoReady()"
+    [src]="videoSource()"
+    [attr.poster]="posterImage() || null"
+    [muted]="true"
+    [loop]="true"
+    [autoplay]="shouldAutoplay"
+    playsinline
+    preload="metadata"
+    (loadeddata)="handleVideoReady()"
+    (error)="handleVideoError()"
+    (play)="isVideoPlaying.set(true)"
+    (pause)="isVideoPlaying.set(false)"></video>
+
+  <div class="feed-overlay" aria-hidden="true"></div>
+  <span class="feed-label"><span class="feed-dot"></span>Sample match feed</span>
+
+  @if (isVideoReady()) {
+    <button
+      type="button"
+      class="playback-toggle"
+      [attr.aria-label]="isVideoPlaying() ? 'Pause video' : 'Play video'"
+      (click)="toggleVideoPlayback(videoElement)">
+      {{ isVideoPlaying() ? '⏸' : '▶' }}
+    </button>
+  }
+</div>

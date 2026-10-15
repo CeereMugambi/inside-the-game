@@ -1,0 +1,30 @@
+import { Match } from '../models/match';
+
+export const MOCK_MATCH: Match = {
+  home: 'Northgate FC',
+  away: 'Riverside United',
+  events: [
+    { id: 1, minute: 3, type: 'corner', team: 'home', player: 'Dan Okoye' },
+    { id: 2, minute: 9, type: 'foul', team: 'away', player: 'Jack Rowe', detail: 'Late challenge in midfield' },
+    { id: 3, minute: 14, type: 'shot_on_target', team: 'home', player: 'Omar Reyes', detail: 'Low drive parried by the keeper' },
+    { id: 4, minute: 21, type: 'yellow_card', team: 'away', player: 'Jack Rowe', detail: 'Persistent fouling' },
+    { id: 5, minute: 27, type: 'goal', team: 'home', player: 'Omar Reyes', detail: 'Finishes a quick counter from a Tomas Silva through ball' },
+    { id: 6, minute: 33, type: 'shot_off_target', team: 'away', player: 'Ivan Petrov' },
+    { id: 7, minute: 38, type: 'corner', team: 'away', player: 'Sam Adeyemi' },
+    { id: 8, minute: 41, type: 'substitution', team: 'home', player: 'Luke Hart', detail: 'On for Dan Okoye' },
+    { id: 9, minute: 45, type: 'yellow_card', team: 'home', player: 'Tomas Silva', detail: 'Dissent' },
+    { id: 10, minute: 52, type: 'goal', team: 'away', player: 'Ivan Petrov', detail: 'Header from a Sam Adeyemi cross' },
+    { id: 11, minute: 58, type: 'foul', team: 'home', player: 'Dan Okoye' },
+    { id: 12, minute: 63, type: 'save', team: 'away', player: 'Leo Marsh', detail: 'Stops a close-range effort' },
+    { id: 13, minute: 67, type: 'shot_on_target', team: 'away', player: 'Sam Adeyemi' },
+    { id: 14, minute: 71, type: 'substitution', team: 'away', player: 'Noah Kane', detail: 'On for Sam Adeyemi' },
+    { id: 15, minute: 74, type: 'penalty', team: 'home', player: 'Tomas Silva', detail: 'Penalty awarded for handball' },
+    { id: 16, minute: 75, type: 'var_review', team: 'home', detail: 'Handball check confirms the penalty' },
+    { id: 17, minute: 76, type: 'goal', team: 'home', player: 'Tomas Silva', detail: 'Converts the penalty' },
+    { id: 18, minute: 80, type: 'corner', team: 'home', player: 'Luke Hart' },
+    { id: 19, minute: 84, type: 'red_card', team: 'away', player: 'Jack Rowe', detail: 'Second yellow for a reckless tackle' },
+    { id: 20, minute: 88, type: 'shot_on_target', team: 'home', player: 'Omar Reyes', detail: 'Curled effort tipped over' },
+    { id: 21, minute: 90, type: 'goal', team: 'away', player: 'Ivan Petrov', detail: 'Late equaliser against ten men' },
+    { id: 22, minute: 93, type: 'foul', team: 'home', player: 'Luke Hart' },
+  ],
+};

@@ -1,0 +1,15 @@
+<section class="stats-panel">
+  @for (statistic of statistics(); track statistic.label) {
+    <div class="statistic-row">
+      <span class="statistic-label">{{ statistic.label }}</span>
+      <b class="statistic-value">{{ statistic.homeValue }}</b>
+      <div
+        class="statistic-bar"
+        role="img"
+        [attr.aria-label]="statistic.homeValue + ' to ' + statistic.awayValue">
+        <span class="statistic-bar-fill" [style.width.%]="statistic.homeSharePercent"></span>
+      </div>
+      <b class="statistic-value away-value">{{ statistic.awayValue }}</b>
+    </div>
+  }
+</section>

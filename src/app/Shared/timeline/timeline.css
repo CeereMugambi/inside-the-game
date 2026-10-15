@@ -1,0 +1,55 @@
+:host { display: block; }
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(var(--color-home-team), var(--color-away-team));
+  opacity: 0.4;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.minute-badge {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  z-index: 1;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-background);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+app-event-card { grid-row: 1; }
+.home-team app-event-card { grid-column: 1; justify-self: end; }
+.away-team app-event-card { grid-column: 3; justify-self: start; }
+
+.highlighted .minute-badge {
+  border-color: var(--color-highlight);
+  color: var(--color-highlight);
+}
+
+@media (max-width: 640px) {
+  .timeline::before { left: 28px; }
+  .timeline-item { grid-template-columns: 56px 1fr; }
+  .minute-badge { grid-column: 1; }
+  .home-team app-event-card,
+  .away-team app-event-card { grid-column: 2; justify-self: stretch; }
+}

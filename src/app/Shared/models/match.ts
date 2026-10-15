@@ -16,3 +16,10 @@ export interface Match {
   away: string;
   events: MatchEvent[];
 }
+
+export interface MatchStatistic {
+  label: string;
+  homeValue: number;
+  awayValue: number;
+  homeSharePercent: number;
+}

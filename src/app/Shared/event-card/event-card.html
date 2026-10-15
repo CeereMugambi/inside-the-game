@@ -1,0 +1,16 @@
+<div
+  class="event-card"
+  [class.home-team]="matchEvent().team === 'home'"
+  [class.away-team]="matchEvent().team === 'away'"
+  [class.highlighted]="isHighlighted()">
+  <span class="event-icon">{{ eventIcon() }}</span>
+  <div class="event-text">
+    <strong class="event-title">{{ eventTitle() }}</strong>
+    @if (matchEvent().player; as playerName) {
+      <span>{{ playerName }}</span>
+    }
+    @if (matchEvent().detail; as eventDetail) {
+      <small>{{ eventDetail }}</small>
+    }
+  </div>
+</div>

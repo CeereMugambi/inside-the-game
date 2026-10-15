@@ -1,0 +1,18 @@
+<header class="scoreboard">
+  <div class="team-side home-team">
+    <span class="team-crest">{{ getTeamInitials(homeTeamName()) }}</span>
+    <h2>{{ homeTeamName() }}</h2>
+  </div>
+
+  <div class="score-display">
+    <span class="score-digit home-team">{{ homeScore() }}</span>
+    <span class="score-divider"></span>
+    <span class="score-digit away-team">{{ awayScore() }}</span>
+  </div>
+
+  <div class="team-side away-team">
+    <span class="team-crest">{{ getTeamInitials(awayTeamName()) }}</span>
+    <h2>{{ awayTeamName() }}</h2>
+  </div>
+</header>
+<p class="match-status">Full time at {{ minutePlayed() }}'</p>

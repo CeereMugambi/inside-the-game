@@ -1,0 +1,12 @@
+<a class="back-link" routerLink="/">← Back to home</a>
+
+<app-scoreboard
+  [homeTeamName]="match().home"
+  [awayTeamName]="match().away"
+  [homeScore]="homeGoalCount()"
+  [awayScore]="awayGoalCount()"
+  [minutePlayed]="lastMinutePlayed()" />
+
+  <app-stats-panel [statistics]="matchStatistics()" />
+  <app-timeline [matchEvents]="match().events" />
+  

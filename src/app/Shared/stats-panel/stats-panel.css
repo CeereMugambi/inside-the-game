@@ -1,0 +1,41 @@
+:host { display: block; }
+
+.stats-panel {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.statistic-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
+  gap: 6px 12px;
+  align-items: center;
+}
+
+.statistic-label {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.away-value { text-align: right; }
+
+.statistic-bar {
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--color-away-team);
+}
+
+.statistic-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-home-team);
+  transition: width 0.6s ease;
+}

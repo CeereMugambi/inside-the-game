@@ -1,0 +1,12 @@
+<ol class="timeline">
+  @for (matchEvent of matchEvents(); track matchEvent.id) {
+    <li
+      class="timeline-item"
+      [class.home-team]="matchEvent.team === 'home'"
+      [class.away-team]="matchEvent.team === 'away'"
+      [class.highlighted]="isHighlightedEvent(matchEvent.type)">
+      <time class="minute-badge">{{ matchEvent.minute }}'</time>
+      <app-event-card [matchEvent]="matchEvent" />
+    </li>
+  }
+</ol>

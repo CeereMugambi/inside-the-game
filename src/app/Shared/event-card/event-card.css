@@ -1,0 +1,36 @@
+:host { display: block; }
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.event-card.home-team {
+  flex-direction: row-reverse;
+  text-align: right;
+  border-color: rgba(76, 111, 255, 0.5);
+}
+.event-card.away-team { border-color: rgba(255, 92, 147, 0.5); }
+
+.event-icon { font-size: 1.4rem; }
+
+.event-text { display: flex; flex-direction: column; gap: 2px; }
+.event-title { text-transform: capitalize; font-size: 0.95rem; }
+.event-text span { font-size: 0.9rem; }
+.event-text small { color: var(--color-text-muted); font-size: 0.8rem; }
+
+.event-card.highlighted {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 24px rgba(255, 209, 102, 0.35);
+}
+.event-card.highlighted .event-icon { font-size: 1.9rem; }
+
+@media (max-width: 640px) {
+  .event-card.home-team { flex-direction: row; text-align: left; }
+}

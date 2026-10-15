@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routes';
-import { LandingPage } from '../pages/landing-page/landing-page';
+import { LandingPage } from './pages/landing-page/landing-page';
 
 
 @NgModule({

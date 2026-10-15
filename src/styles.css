@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-background: #12112b;
+  --color-text: #eef0ff;
+  --color-text-muted: #9a9cc8;
+  --color-home-team: #4c6fff;
+  --color-away-team: #ff5c93;
+  --color-highlight: #ffd166;
+  --font-heading: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(900px 500px at 0% 0%, rgba(76, 111, 255, 0.35), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(255, 92, 147, 0.3), transparent 60%),
+    var(--color-background);
+  background-attachment: fixed;
+}

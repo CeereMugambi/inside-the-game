@@ -1,0 +1,35 @@
+<section class="hero">
+  <p class="hero-badge">Premier League data, explained</p>
+  <h1>Every match tells a story. <span class="gradient-text">We narrate it.</span></h1>
+  <p class="hero-subtitle">
+    Turn raw match events into live commentary, tactical insight and instant recaps for fans, studios and streamers.
+  </p>
+
+  <div class="hero-actions">
+    <a class="primary-button" routerLink="/match">Open match centre</a>
+    <button type="button" class="secondary-button" (click)="scrollToFeatures()">See how it works</button>
+  </div>
+
+  <div class="match-preview">
+    <div class="preview-team">Northgate FC</div>
+    <div class="preview-score">2 : 2</div>
+    <div class="preview-team">Riverside United</div>
+    <p class="preview-moment">90' Late equaliser against ten men</p>
+  </div>
+
+  <ul class="language-list">
+    @for (languageName of supportedLanguages; track languageName) {
+      <li>{{ languageName }}</li>
+    }
+  </ul>
+</section>
+
+<section id="features" class="features">
+  @for (featureHighlight of featureHighlights; track featureHighlight.title) {
+    <article class="feature-card">
+      <span class="feature-icon">{{ featureHighlight.icon }}</span>
+      <h3>{{ featureHighlight.title }}</h3>
+      <p>{{ featureHighlight.description }}</p>
+    </article>
+  }
+</section>

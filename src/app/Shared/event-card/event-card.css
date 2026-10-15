@@ -34,3 +34,5 @@
 @media (max-width: 640px) {
   .event-card.home-team { flex-direction: row; text-align: left; }
 }
+.event-card { transition: transform 0.2s ease; }
+.event-card:hover { transform: translateY(-3px); }

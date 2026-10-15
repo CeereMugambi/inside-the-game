@@ -36,3 +36,7 @@ export interface LanguageOption {
   code: CommentaryLanguageCode;
   label: string;
 }
+export interface MatchRecap {
+  headline: string;
+  summary: string;
+}

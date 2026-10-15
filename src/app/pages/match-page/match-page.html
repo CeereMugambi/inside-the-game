@@ -1,4 +1,7 @@
 <a class="back-link" routerLink="/">← Back to home</a>
+@if (latestGoalEvent(); as goalEvent) {
+  <app-goal-banner [scorerName]="goalEvent.player ?? 'Unknown player'" [teamName]="latestGoalTeamName()" />
+}
 
 <app-scoreboard
   [homeTeamName]="match().home"
@@ -18,7 +21,10 @@
   <app-timeline [matchEvents]="visibleEvents()" [shouldFollowLatest]="isPlaying()" />
 
   <aside class="match-sidebar">
-    <app-stats-panel [statistics]="matchStatistics()" />
+  @if (hasFinished()) {
+    <app-recap-card [recap]="currentRecap()" />
+  }
+  <app-stats-panel [statistics]="matchStatistics()" />
     <app-language-switcher
       [languageOptions]="languageOptions"
       [selectedLanguageCode]="selectedLanguageCode()"

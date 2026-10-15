@@ -1,0 +1,31 @@
+:host {
+  position: fixed;
+  top: 96px;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.goal-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 36px;
+  border-radius: 20px;
+  color: #12112b;
+  background: linear-gradient(90deg, var(--color-highlight), #ffb347);
+  box-shadow: 0 0 60px rgba(255, 209, 102, 0.6);
+  animation: goal-banner-enter 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+.goal-word { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; }
+.goal-detail { font-weight: 700; }
+
+@keyframes goal-banner-enter {
+  from { opacity: 0; transform: scale(0.6) translateY(-20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .goal-banner { animation: none; }
+}

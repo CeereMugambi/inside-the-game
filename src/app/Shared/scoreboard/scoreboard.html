@@ -1,18 +1,29 @@
-<header class="scoreboard">
-  <div class="team-side home-team">
-    <span class="team-crest">{{ getTeamInitials(homeTeamName()) }}</span>
-    <h2>{{ homeTeamName() }}</h2>
-  </div>
+<section class="scoreboard-panel">
+  @if (!isFinished()) {
+    <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+  }
 
-  <div class="score-display">
-    <span class="score-digit home-team">{{ homeScore() }}</span>
-    <span class="score-divider"></span>
-    <span class="score-digit away-team">{{ awayScore() }}</span>
-  </div>
+  <header class="scoreboard">
+    <div class="team-side home-team">
+      <span class="team-crest">{{ getTeamInitials(homeTeamName()) }}</span>
+      <h2>{{ homeTeamName() }}</h2>
+    </div>
 
-  <div class="team-side away-team">
-    <span class="team-crest">{{ getTeamInitials(awayTeamName()) }}</span>
-    <h2>{{ awayTeamName() }}</h2>
-  </div>
-</header>
-<p class="match-status">{{ isFinished() ? 'Full time at' : 'Live at' }} {{ minutePlayed() }}'</p>
+    <div class="score-display">
+      @for (currentHomeScore of [homeScore()]; track currentHomeScore) {
+        <span class="score-digit home-team">{{ currentHomeScore }}</span>
+      }
+      <span class="score-divider"></span>
+      @for (currentAwayScore of [awayScore()]; track currentAwayScore) {
+        <span class="score-digit away-team">{{ currentAwayScore }}</span>
+      }
+    </div>
+
+    <div class="team-side away-team">
+      <span class="team-crest">{{ getTeamInitials(awayTeamName()) }}</span>
+      <h2>{{ awayTeamName() }}</h2>
+    </div>
+  </header>
+
+  <p class="match-status">{{ isFinished() ? 'Full time at' : 'Live at' }} {{ minutePlayed() }}'</p>
+</section>

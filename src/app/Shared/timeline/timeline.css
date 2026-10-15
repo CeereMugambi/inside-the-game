@@ -63,3 +63,4 @@ app-event-card { grid-row: 1; }
 @media (prefers-reduced-motion: reduce) {
   .timeline-item { animation: none; }
 }
+.highlighted .minute-badge { box-shadow: 0 0 16px rgba(255, 209, 102, 0.5); }

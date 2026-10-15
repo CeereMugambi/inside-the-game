@@ -10,12 +10,15 @@ import { LanguageSwitcher } from '../../Shared/language-switcher/language-switch
 import { CommentaryFeed } from '../../Shared/commentary-feed/commentary-feed';
 import { LANGUAGE_OPTIONS } from '../../Shared/models/language-options';
 import { MOCK_COMMENTARY } from '../../Mock_data/mock-commentary';
+import { MOCK_RECAP } from '../../Mock_data/mock-recap';
+import { GoalBanner } from '../../Shared/goal-banner/goal-banner';
+import { RecapCard } from '../../Shared/recap-card/recap-card';
 
 
 const MILLISECONDS_BETWEEN_EVENTS = 1000;
 
 @Component({
-  imports: [Scoreboard, StatsPanel,Timeline,PlaybackControls,LanguageSwitcher,CommentaryFeed,RouterLink],
+  imports: [Scoreboard, StatsPanel, Timeline, PlaybackControls, LanguageSwitcher, CommentaryFeed, RouterLink, GoalBanner, RecapCard],
   selector: 'app-match-page',
   styleUrl: './match-page.css',
   templateUrl: './match-page.html',
@@ -41,6 +44,19 @@ export class MatchPage {
   return MOCK_COMMENTARY[this.selectedLanguageCode()].filter(
     (commentaryLine) => commentaryLine.eventId <= lastRevealedEventId,
   );
+});
+
+currentRecap = computed(() => MOCK_RECAP[this.selectedLanguageCode()]);
+
+latestGoalEvent = computed(() => {
+  const latestEvent = this.visibleEvents().at(-1);
+  return this.isPlaying() && latestEvent?.type === 'goal' ? latestEvent : null;
+});
+
+latestGoalTeamName = computed(() => {
+  const goalEvent = this.latestGoalEvent();
+  if (!goalEvent) return '';
+  return goalEvent.team === 'home' ? this.match().home : this.match().away;
 });
 
 handleLanguageSelected(languageCode: CommentaryLanguageCode) {
